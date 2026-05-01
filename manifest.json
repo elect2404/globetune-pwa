@@ -14,13 +14,13 @@
     {
       "src": "https://raw.githubusercontent.com/elect2404/globetune-pwa/main/icon-512.png",
       "sizes": "512x512",
-      "type": "image/jpeg",
+      "type": "image/png",
       "purpose": "any maskable"
     },
     {
       "src": "https://raw.githubusercontent.com/elect2404/globetune-pwa/main/icon-512.png",
       "sizes": "192x192",
-      "type": "image/jpeg",
+      "type": "image/png",
       "purpose": "any maskable"
     }
   ],
@@ -30,14 +30,14 @@
       "short_name": "Explorar",
       "description": "Ver todas las emisoras",
       "url": "https://globetune.blogspot.com/#explore",
-      "icons": [{ "src": "https://raw.githubusercontent.com/elect2404/globetune-pwa/main/icon-512.png", "sizes": "192x192", "type": "image/jpeg" }]
+      "icons": [{ "src": "https://raw.githubusercontent.com/elect2404/globetune-pwa/main/icon-512.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
       "name": "Radio Local",
       "short_name": "Local",
       "description": "Emisoras de tu país",
       "url": "https://globetune.blogspot.com/#local",
-      "icons": [{ "src": "https://raw.githubusercontent.com/elect2404/globetune-pwa/main/icon-512.png", "sizes": "192x192", "type": "image/jpeg" }]
+      "icons": [{ "src": "https://raw.githubusercontent.com/elect2404/globetune-pwa/main/icon-512.png", "sizes": "192x192", "type": "image/png" }]
     }
   ]
 }
