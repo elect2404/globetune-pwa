@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.blogspot.globetune.twa",
+        "sha256_cert_fingerprints": ["0F:8E:0A:85:8D:57:B4:97:EF:BD:F8:3A:12:0C:3B:F9:52:A5:E4:75:1B:06:15:BD:82:E0:FE:45:2A:F4:54:9A"]
+      }
+    }]
