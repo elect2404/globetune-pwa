@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RadioStream - Escucha Radio Online y Emisoras en Vivo</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Escucha las mejores emisoras de radio online en vivo de todo el mundo. RadioStream te ofrece música, noticias y deportes gratis en alta calidad.">
+    <meta name="keywords" content="radio online, emisoras en vivo, escuchar radio, música gratis, radio por internet">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="RadioStream - Escucha Radio Online y Emisoras en Vivo">
+    <meta property="og:description" content="Sintoniza miles de estaciones de radio de todo el mundo con la mejor calidad de audio.">
+    <meta property="og:image" content="https://i.ibb.co/m0f2p0Z/radiostream-og.jpg">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "RadioStream",
+      "description": "Plataforma de radio online para escuchar emisoras de todo el mundo en vivo.",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "All"
+    }
+    </script>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="styles.css?v=3">
+    
+    <!-- PWA Config -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#10b981">
+    <link rel="apple-touch-icon" href="icon-512.png">
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('service-worker.js')
+            .then(reg => console.log('SW registrado', reg))
+            .catch(err => console.log('SW error', err));
+        });
+      }
+    </script>
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="brand">
+                <i class="ph-fill ph-radio"></i>
+                <span>RadioStream</span>
+            </div>
+            
+            <nav class="nav-menu">
+                <div class="nav-section">
+                    <h3 class="nav-title" data-i18n="discover">Descubrir</h3>
+                    <a href="#" class="nav-item active" id="navHome">
+                        <i class="ph ph-house"></i> <span data-i18n="home">Inicio</span>
+                    </a>
+                    <a href="#" class="nav-item" id="navExplore">
+                        <i class="ph ph-compass"></i> <span data-i18n="explore">Explorar</span>
+                    </a>
+                    <a href="#" class="nav-item" id="navLocal">
+                        <i class="ph ph-map-pin"></i> <span data-i18n="local_radio">Radio Local</span>
+                    </a>
+                    <a href="#" class="nav-item" id="navLanguages">
+                        <i class="ph ph-translate"></i> <span data-i18n="languages">Por idiomas</span>
+                    </a>
+                </div>
+                
+                <div class="nav-section">
+                    <h3 class="nav-title" data-i18n="your_library">Tu Biblioteca</h3>
+                    <a href="#" class="nav-item" id="navFavorites">
+                        <i class="ph ph-heart"></i> <span data-i18n="favorites">Favoritos</span>
+                    </a>
+                    <a href="#" class="nav-item" id="navRecents">
+                        <i class="ph ph-clock-counter-clockwise"></i> <span data-i18n="recents">Recientes</span>
+                    </a>
+                </div>
+            </nav>
+            <div style="flex-grow: 1;"></div>
+            <div class="nav-section" style="margin-bottom: 0;">
+                <a href="privacidad.html" class="nav-item" style="font-size: 0.85rem; padding: 0.5rem 1rem;"><i class="ph ph-shield-check"></i> <span data-i18n="privacy">Privacidad</span></a>
+                <a href="contacto.html" class="nav-item" style="font-size: 0.85rem; padding: 0.5rem 1rem;"><i class="ph ph-envelope"></i> <span data-i18n="contact">Contacto</span></a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="top-header">
+                <button class="menu-toggle" id="btnMenuToggle">
+                    <i class="ph ph-list"></i>
+                </button>
+                <div class="search-bar">
+                    <i class="ph ph-magnifying-glass"></i>
+                    <input type="text" id="searchInput" placeholder="Buscar emisoras, géneros, países..." data-i18n-placeholder="search_placeholder">
+                </div>
+                <div class="user-profile">
+                    <div class="avatar-container" id="btnProfile" style="cursor: pointer; display: flex; align-items: center; gap: 0.5rem;">
+                        <span id="displayUsername" style="font-weight: 500; font-size: 0.9rem;">Oyente</span>
+                        <div class="avatar">
+                            <img src="https://i.pravatar.cc/150?img=11" alt="Perfil" id="displayAvatar">
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Scrollable Content -->
+            <div class="content-scroll">
+                <section class="hero-section">
+                    <div class="hero-content">
+                        <h1 data-i18n="hero_title">Sintoniza el mundo</h1>
+                        <p data-i18n="hero_subtitle">Descubre miles de estaciones de radio en vivo desde cualquier lugar.</p>
+                        <button class="btn-primary" id="btnHeroPlay" data-i18n="listen_now">Escuchar Ahora</button>
+                    </div>
+                </section>
+
+                <section class="stations-section">
+                    <div class="section-header">
+                        <h2 id="sectionTitle" data-i18n="popular_stations">Estaciones Populares</h2>
+                    </div>
+                    
+                    <div class="stations-grid" id="stationsGrid">
+                        <!-- Stations will be injected here via JS -->
+                        <div class="loading-spinner">Cargando emisoras...</div>
+                    </div>
+                    
+                    <div class="load-more-container">
+                        <a href="#" class="view-all" id="btnViewAll" data-i18n="load_more">
+                            <i class="ph ph-plus-circle"></i>
+                            <span>Cargar más (500)</span>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- SEO Content Section -->
+                <section class="seo-content" style="margin-top: 4rem; padding: 2rem; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid var(--border); color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">
+                    <h2 data-i18n="seo_title" style="color: var(--text-primary); margin-bottom: 1rem; font-size: 1.2rem;">RadioStream: Tu Radio Online en Vivo</h2>
+                    <p data-i18n="seo_p1">Bienvenido a RadioStream, la plataforma líder para escuchar radio online gratis. Nuestra aplicación te permite sintonizar miles de emisoras de radio en vivo de todos los continentes.</p>
+                    <p data-i18n="seo_p2" style="margin-top: 1rem;">Ya sea que busques radio FM, música pop, jazz, rock o emisoras locales de tu país, RadioStream ofrece la mejor experiencia de usuario.</p>
+                </section>
+            </div>
+        </main>
+
+        <!-- Persistent Player -->
+        <footer class="player">
+            <div class="player-info">
+                <div class="player-img-placeholder" id="playerImg">
+                    <i class="ph ph-music-notes"></i>
+                </div>
+                <div class="player-details">
+                    <h4 id="playerTitle" data-i18n="no_station">Ninguna emisora</h4>
+                    <p id="playerSubtitle" data-i18n="select_station">Selecciona una emisora para escuchar</p>
+                </div>
+            </div>
+
+            <div class="player-controls">
+                <button class="round-nav-btn" id="btnPrev" aria-label="Anterior"><i class="ph ph-skip-back"></i></button>
+                <button class="play-btn" id="btnPlayPause" aria-label="Reproducir/Pausar"><i class="ph-fill ph-play-circle"></i></button>
+                <button class="round-nav-btn" id="btnNext" aria-label="Siguiente"><i class="ph ph-skip-forward"></i></button>
+            </div>
+
+            <div class="player-actions">
+                <button class="icon-btn" id="btnFavorite" aria-label="Añadir a favoritos"><i class="ph ph-heart"></i></button>
+                <div class="volume-control">
+                    <i class="ph ph-speaker-high" id="volumeIcon"></i>
+                    <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.25">
+                </div>
+            </div>
+            
+            <!-- Hidden Audio Element -->
+            <audio id="audioElement"></audio>
+        </footer>
+        <nav class="mobile-nav">
+            <div class="mobile-nav-item active" onclick="document.getElementById('navHome').click()">
+                <i class="ph ph-house"></i>
+                <span data-i18n="home">Inicio</span>
+            </div>
+            <div class="mobile-nav-item" onclick="document.getElementById('navExplore').click()">
+                <i class="ph ph-compass"></i>
+                <span data-i18n="explore">Explorar</span>
+            </div>
+            <div class="mobile-nav-item" onclick="document.getElementById('navLocal').click()">
+                <i class="ph ph-map-pin"></i>
+                <span data-i18n="local_radio">Local</span>
+            </div>
+            <div class="mobile-nav-item" onclick="document.getElementById('navFavorites').click()">
+                <i class="ph ph-heart"></i>
+                <span data-i18n="favorites">Favoritos</span>
+            </div>
+        </nav>
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div class="modal-overlay" id="profileModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 data-i18n="profile_settings">Configuración de Perfil</h2>
+                <button class="icon-btn" id="btnCloseProfile"><i class="ph ph-x"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="inputUsername" data-i18n="username">Nombre de Usuario</label>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <input type="text" id="inputUsername" class="form-input" placeholder="Oyente" data-i18n-placeholder="username_placeholder">
+                        <button class="btn-primary" id="btnSaveUsername" style="padding: 0.5rem 1rem;" data-i18n="save">Guardar</button>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label data-i18n="avatar">Foto de Perfil</label>
+                    <div style="display: flex; gap: 1rem; align-items: center;">
+                        <img id="modalAvatarPreview" src="https://i.pravatar.cc/150?img=11" style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border);">
+                        <input type="file" id="inputAvatarFile" accept="image/*" style="display: none;">
+                        <button class="icon-btn" id="btnUploadAvatar" style="background: var(--bg-surface-hover); padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.85rem; font-weight: 500; border: 1px solid var(--border); color: var(--text-primary);" data-i18n="upload_photo"><i class="ph ph-camera" style="margin-right: 0.5rem;"></i> Cambiar Foto</button>
+                    </div>
+                </div>
+                
+                <hr class="modal-divider">
+                
+                <h3 data-i18n="data_management" style="margin-bottom: 1rem; font-size: 1rem;">Gestión de Datos</h3>
+                <div class="data-actions">
+                    <button class="btn-danger" id="btnClearRecents">
+                        <i class="ph ph-trash"></i> <span data-i18n="clear_recents">Borrar Historial</span>
+                    </button>
+                    <button class="btn-danger" id="btnClearFavorites">
+                        <i class="ph ph-trash"></i> <span data-i18n="clear_favorites">Borrar Favoritos</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js?v=19"></script>
+</body>
+</html>
+

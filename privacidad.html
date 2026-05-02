@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { overflow-y: auto; }
+        .legal-content {
+            padding: 4rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .legal-content h1, .legal-content h2 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            margin-top: 2.5rem;
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            background: rgba(16, 185, 129, 0.1);
+        }
+        .back-btn:hover { background: rgba(16, 185, 129, 0.2); }
+        @media (max-width: 768px) {
+            .legal-content { padding: 2rem 1.5rem; }
+            .legal-content h1 { font-size: 1.75rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content" style="min-height: 100vh;">
+        <div class="legal-content">
+            <a href="index.html" class="back-btn" data-i18n="back_to_radio">← Volver a la Radio</a>
+            <h1 data-i18n="privacy_policy_title">Política de Privacidad</h1>
+            <p data-i18n="privacy_last_update">Última actualización: Abril 2026</p>
+            
+            <h2 data-i18n="privacy_s1_title">1. Información que recopilamos</h2>
+            <p data-i18n="privacy_s1_text">Nuestra aplicación almacena información estrictamente de forma local en su dispositivo (tecnología LocalStorage). Esto incluye sus estaciones de radio favoritas, su historial de emisoras escuchadas recientemente, su nombre de usuario configurado y su foto de perfil. <b>Ninguno de estos datos se envía a nuestros servidores ni se comparte con terceros.</b> Usted tiene el control total para borrar esta información desde el panel de perfil en cualquier momento.</p>
+            
+            <h2 data-i18n="privacy_s2_title">2. Uso de la Geolocalización</h2>
+            <p data-i18n="privacy_s2_text">Utilizamos servicios públicos y anónimos (geojs.io) para determinar su país aproximado basándonos en su dirección IP. El único fin de esto es poder filtrar y mostrarle automáticamente emisoras de radio relevantes de su región en la sección "Radio Local". No rastreamos, almacenamos ni compartimos su ubicación exacta.</p>
+
+            <h2 data-i18n="privacy_s3_title">3. Proveedores de Terceros (Radios)</h2>
+            <p data-i18n="privacy_s3_text">Esta aplicación funciona como un buscador y utiliza la API pública y gratuita de <strong>Radio Browser</strong> para listar emisoras. No tenemos control sobre las transmisiones de audio emitidas por las estaciones individuales, el contenido de su programación ni sus propias políticas de privacidad. Al escuchar una emisora, usted se conecta directamente a los servidores públicos de dicha radio.</p>
+
+            <h2 data-i18n="privacy_s4_title">4. Publicidad (Google AdSense)</h2>
+            <p data-i18n="privacy_s4_text">Nos asociamos con redes publicitarias de terceros, como Google AdSense, para mostrar anuncios. Google utiliza cookies (incluidas las cookies de DoubleClick) para publicar anuncios basados en sus visitas anteriores a este y otros sitios web en Internet. Usted puede administrar sus preferencias de privacidad y optar por no participar en la publicidad personalizada visitando la Configuración de anuncios de Google u opciones similares en su navegador.</p>
+
+            <h2 data-i18n="privacy_s5_title">5. Contacto</h2>
+            <p data-i18n="privacy_s5_text">Si tiene alguna pregunta sobre esta Política de Privacidad o las prácticas de este sitio, contáctenos al correo provisto en nuestra sección de Contacto.</p>
+        </div>
+    </div>
+    <script src="app.js?v=19"></script>
+</body>
+</html>

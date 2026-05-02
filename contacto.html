@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { overflow-y: auto; }
+        .legal-content {
+            padding: 4rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .legal-content h1 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            background: rgba(16, 185, 129, 0.1);
+        }
+        .back-btn:hover { background: rgba(16, 185, 129, 0.2); }
+        .contact-box {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 3rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        .email-link {
+            font-size: 2rem;
+            color: var(--primary);
+            font-weight: 600;
+            display: block;
+            margin-top: 1rem;
+        }
+        .email-link:hover {
+            color: var(--primary-hover);
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .legal-content { padding: 2rem 1.5rem; }
+            .email-link { font-size: 1.2rem; }
+            .contact-box { padding: 2rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content" style="min-height: 100vh;">
+        <div class="legal-content">
+            <a href="index.html" class="back-btn" data-i18n="back_to_radio">← Volver a la Radio</a>
+            <h1 data-i18n="contact_h1">Contacto</h1>
+            <p data-i18n="contact_intro">Valoramos enormemente el feedback de nuestros oyentes. Si tienes sugerencias para mejorar la aplicación, necesitas reportar un problema técnico, o tienes consultas profesionales, alianzas comerciales y patrocinios, nos encantaría escucharte.</p>
+            
+            <div class="contact-box">
+                <p data-i18n="contact_box_text">Escríbenos directamente a nuestro correo electrónico y te responderemos a la mayor brevedad posible:</p>
+                <a href="mailto:elect2404@gmail.com" class="email-link">elect2404@gmail.com</a>
+            </div>
+        </div>
+    </div>
+    <script src="app.js?v=19"></script>
+</body>
+</html>
