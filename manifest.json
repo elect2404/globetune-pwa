@@ -2,8 +2,8 @@
   "name": "GlobeTune - Radio Online",
   "short_name": "GlobeTune",
   "description": "Escucha miles de emisoras de radio en vivo de todo el mundo gratis.",
-  "start_url": "/",
-  "scope": "/",
+  "start_url": "./",
+  "scope": "./",
   "display": "fullscreen",
   "orientation": "portrait",
   "background_color": "#09090b",
@@ -37,14 +37,14 @@
       "name": "Explorar",
       "short_name": "Explorar",
       "description": "Ver todas las emisoras",
-      "url": "/#explore",
+      "url": "./#explore",
       "icons": [{ "src": "icon-512.png", "sizes": "192x192" }]
     },
     {
       "name": "Radio Local",
       "short_name": "Local",
       "description": "Emisoras de tu país",
-      "url": "/#local",
+      "url": "./#local",
       "icons": [{ "src": "icon-512.png", "sizes": "192x192" }]
     }
   ]
